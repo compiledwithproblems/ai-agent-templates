@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - AGENT_SERVICE_HOST=agent-execution
+    depends_on:
+      - redis
+      - agent-execution
+    volumes:
+      - .:/app
+    networks:
+      - agent-network
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - agent-network
+
+  agent-execution:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: ["python", "-c", "import time; time.sleep(infinity)"]  # Placeholder for actual agent service
+    networks:
+      - agent-network
+
+networks:
+  agent-network:
+    driver: bridge 
