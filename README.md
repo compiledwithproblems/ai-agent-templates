@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/Ai-Agent-Templates-Logo.png" alt="AI Agent Templates Logo" width="400">
+</p>
+
 # AI Agent Templates
 
 A comprehensive collection of templates and components for building sophisticated AI agents and systems. This project provides modular building blocks for developers to create, deploy, and scale AI agents across various use cases.
